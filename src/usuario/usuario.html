@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPLEADOS</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  </head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .update{
+        position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-modal);
+    background-color: hsla(230, 75%, 15%, .1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 8rem 1.5rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+    }
+    .show{
+    opacity: 1;
+    pointer-events: initial;
+    }
+</style>
+<body class="body bg-gray-50  dark:bg-gray-700 py-7 px-3 relative" >
+    <div class="container mx-auto ">
+        <form action="">
+            <div class="grid grid-cols-6 gap-3 mb-5 ">
+              
+                <label  for="dropzonefile" class="sm:col-span-4 col-span-6 row-span-3 label border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                           </div>
+                    <input id="dropzonefile" type="file" class="hidden" />
+                </label>
+                <div class="sm:col-span-2 col-span-6 row-span-1 mb-3">
+                    <div class="relative h-11 w-full min-w-[200px]">
+                        <input placeholder="TITULO"
+                        id="titulo"
+                            class="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-white focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100 text-black dark:text-white" />
+                        <label
+                            class="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                            TITULO
+                        </label>
+                    </div>
+                    
+                     
+                </div>
+                  
+                <div class="sm:col-span-2 col-span-6 row-span-1 ">
+                    <div class="input-container">
+                        <textarea
+                        class="text-[12px] text-black dark:text-white outline-0 bg-transparent border-2 dark:border-white p-2 rounded w-[100%] border-black"
+                        placeholder="COMENTARIO..."
+                        style="resize: both"
+                        name=""
+                        id="textarea"
+                        autocomplete="off"
+                      ></textarea>
+                    
+                    <div class="underline"></div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 col-span-6 row-span-1 mb-3">
+                    <button id="botonEnviar" type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:border-gray-700">ENVIAR</button>
+            
+                </div>
+            
+            </div> 
+            </form>
+            <div class="contenidoMain  grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-4">
+                
+            </div>
+    </div>
+    
+<div class="update flex justify-center items-center pb-[7em]">
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="usuario.js">
+
+</script>
+
+
+</body>
+</html>
