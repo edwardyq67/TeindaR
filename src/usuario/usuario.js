@@ -70,7 +70,7 @@ botonEnviar.addEventListener("click", async () => {
   formData.append("image", dropzonefile.files[0]);
     try {
       const respuesta = await axios.post(
-              "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
+              "http://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
               formData
             );
          await axios.post("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion", {
