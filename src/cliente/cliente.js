@@ -1,7 +1,7 @@
 const contenidomain=document.querySelector(".contenidomain")
 
 try {
-    axios.get("http://localhost:5230/informacion")
+    axios.get("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion")
     .then(res=>{
         for (let i = res.data.length - 1; i >= 0; i--) {
             cart=` <div class="relative group overflow-hidden">
@@ -24,7 +24,7 @@ const seleccion=(e)=>{
   contenidomain.innerHTML = '';
     const defaultsearch = document.getElementById("default-search");
     try {
-      axios.get(`http://localhost:5230/informacion?title=${defaultsearch.value}`)
+      axios.get(`https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion?title=${defaultsearch.value}`)
       
       .then(res=>{
           for (let i = res.data.length - 1; i >= 0; i--) {

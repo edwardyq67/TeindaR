@@ -70,10 +70,10 @@ botonEnviar.addEventListener("click", async () => {
   formData.append("image", dropzonefile.files[0]);
     try {
       const respuesta = await axios.post(
-              "http://localhost:5230/informacionImg",
+              "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
               formData
             );
-         await axios.post("http://localhost:5230/informacion", {
+         await axios.post("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion", {
         title: titulo.value,
         contend: textarea.value,
         url: respuesta.data.url,
@@ -86,7 +86,7 @@ botonEnviar.addEventListener("click", async () => {
 // DELETE 
 const basura=async(id)=>{
   try {
-    await axios.delete(`http://localhost:5230/informacion/${id}`)
+    await axios.delete(`https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion/${id}`)
     location.reload();
   } catch (error) {
     console.log(error);
@@ -100,7 +100,7 @@ const updateId = async (id) => {
   try {
     update.classList.add("show");
     body.classList.add("overflow-hidden")
-    const res = await axios.get(`http://localhost:5230/informacion/${id}`);
+    const res = await axios.get(`https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion/${id}`);
 
     update.innerHTML = `
       <form>
@@ -151,11 +151,11 @@ const updateId = async (id) => {
       
         try {
           const respuesta = await axios.post(
-            "http://localhost:5230/informacionImg",
+            "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
             formData
           );
       
-          await axios.put(`http://localhost:5230/informacion/${id}`, {
+          await axios.put(`https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion/${id}`, {
             title: tituloID.value,
             contend: textareaID.value,
             // Si se selecciona un archivo nuevo, usar la URL de la respuesta del servidor
