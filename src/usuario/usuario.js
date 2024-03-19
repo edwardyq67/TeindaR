@@ -1,7 +1,7 @@
 // GET
 const contenidoMain = document.querySelector(".contenidoMain");
 axios
-  .get("http://localhost:5230/informacion")
+  .get("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion")
   .then((res) => {
     for (let i = res.data.length - 1; i >= 0; i--) {
       const carta = document.createElement("div");
