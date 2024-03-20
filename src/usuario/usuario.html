@@ -41,22 +41,32 @@
         <form action="">
             <div class="grid grid-cols-6 gap-3 mb-5 ">
               
-                <label  for="dropzonefile" class="sm:col-span-4 col-span-6 row-span-3 label border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <!-- <label  for="dropzonefile" class="sm:col-span-4 col-span-6 row-span-3 label border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                         </svg>
                         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                            </div>
-                    <input id="dropzonefile" type="file" class="hidden" />
-                </label>
+                    <input id="dropzonefile" type="text" class="hidden" />
+                </label> -->
+                <div for="dropzonefile" class="relative  h-[15em]  border-2 border-gray-600 rounded-t-lg px-2 sm:col-span-4 col-span-6 row-span-3 label bg-transparent  ">
+                    <div class="contenedor row-span-2 h-[19vh] w-[100%] ">
+                        
+                    </div>
+                    <div class="input grid grid-cols-6 absolute inset-x-1 bottom-1   ">
+                        <label id="butonURL"  for="" class="cursor-pointer rounded-l-lg col-span-1 self-center text-center text-white bg-gray-800 h-[100%] pt-2"> URL </label>
+                        <input  id="urlImagen" autocomplete="off" type="text" class="rounded-r-lg col-span-5 bg-transparent border-2 border-gray-800 outline-0 p-2 dark:text-white" placeholder="https://.example.com">
+                    </div>
+                </div>
                 <div class="sm:col-span-2 col-span-6 row-span-1 mb-3">
                     <div class="relative h-11 w-full min-w-[200px]">
                         <input placeholder="TITULO"
                         id="titulo"
+                        autocomplete="off"
                             class="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-white focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100 text-black dark:text-white" />
                         <label
-                            class="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                            class="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-white transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:after:scale-x-100 peer-focus:after:border-gray-800 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-white">
                             TITULO
                         </label>
                     </div>
@@ -67,7 +77,7 @@
                 <div class="sm:col-span-2 col-span-6 row-span-1 ">
                     <div class="input-container">
                         <textarea
-                        class="text-[12px] text-black dark:text-white outline-0 bg-transparent border-2 dark:border-white p-2 rounded w-[100%] border-black"
+                        class=" transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-focus:after:border-gray-800 text-[12px] after: text-black dark:text-white outline-0 bg-transparent border-2 dark:border-white p-2 rounded w-[100%] border-black"
                         placeholder="COMENTARIO..."
                         style="resize: both"
                         name=""

@@ -47,42 +47,80 @@ axios
   });
 // POST
 
-const dropzonefile = document.getElementById("dropzonefile");
-const label = document.querySelector(".label");
+// const dropzonefile = document.getElementById("dropzonefile");
+// const label = document.querySelector(".label");
 
-dropzonefile.addEventListener("change", () => {
-  const reader = new FileReader();
-  reader.readAsDataURL(dropzonefile.files[0]);
-  reader.addEventListener("load", (e) => {
-    const mostrar = `<div class="imagen">
-            <img id="imagen" class="h-[20vh] mx-auto pt-5" src=${e.currentTarget.result} alt="">
+// dropzonefile.addEventListener("change", () => {
+//   const reader = new FileReader();
+//   reader.readAsDataURL(dropzonefile.files[0]);
+//   reader.addEventListener("load", (e) => {
+//     const mostrar = `<div class="imagen">
+//             <img id="imagen" class="h-[20vh] mx-auto pt-5" src=${e.currentTarget.result} alt="">
+//         </div>`;
+//     label.innerHTML = mostrar;
+//   });
+// });
+
+// const botonEnviar = document.getElementById("botonEnviar");
+// const formData = new FormData();
+// const textarea = document.getElementById("textarea");
+// const titulo = document.getElementById("titulo");
+
+// botonEnviar.addEventListener("click", async () => {
+//   formData.append("image", dropzonefile.files[0]);
+//     try {
+//       const respuesta = await axios.post(
+//               "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
+//               formData
+//             );
+//          await axios.post("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion", {
+//         title: titulo.value,
+//         contend: textarea.value,
+//         url: respuesta.data.url,
+//       });
+//       location.reload();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+
+const startTime = performance.now();
+
+// Tu código JavaScript aquí
+const urlImg=document.getElementById("urlImagen")
+const butonURL=document.getElementById("butonURL")
+
+butonURL.addEventListener("click",()=>{
+  console.log(urlImg.value)
+  const mostrar = `<div class="imagen mb:pt-1 sm:pt-2 pt-3 ">
+            <img id="imagen" class="h-[18vh] mx-auto" src=${urlImg.value} alt="">
         </div>`;
-    label.innerHTML = mostrar;
-  });
-});
-
+  document.querySelector(".contenedor").innerHTML=mostrar
+})
 const botonEnviar = document.getElementById("botonEnviar");
-const formData = new FormData();
+
 const textarea = document.getElementById("textarea");
 const titulo = document.getElementById("titulo");
 
-botonEnviar.addEventListener("click", async () => {
-  formData.append("image", dropzonefile.files[0]);
-    try {
-      const respuesta = await axios.post(
-              "http://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
-              formData
-            );
-         await axios.post("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion", {
-        title: titulo.value,
+botonEnviar.addEventListener("click",async()=>{
+  try {
+    await axios.post("https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion",{
+      title: titulo.value,
         contend: textarea.value,
-        url: respuesta.data.url,
-      });
-      location.reload();
-    } catch (error) {
-        console.log(error);
-    }
-});
+        url: urlImg.value,
+    })
+    location.reload();
+  } catch (error) {
+    
+  }
+})
+
+// Medir el tiempo justo después de la ejecución del código
+const endTime = performance.now();
+
+// Calcular la diferencia para obtener el tiempo total de carga
+const totalTime = endTime - startTime;
+console.log(`El tiempo total de carga es de ${totalTime} milisegundos.`);
 // DELETE 
 const basura=async(id)=>{
   try {
@@ -104,13 +142,20 @@ const updateId = async (id) => {
 
     update.innerHTML = `
       <form>
-        <div class="relative flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
-          <i onclick="cerrar()" class="hover:text-black transition duration-200 absolute top-0 right-0 text-white fa-solid fa-xmark p-2" style="cursor:pointer;font-size: 1.2em;"></i>
-          <label for="imagenInput" class="min-h-30 object-cover w-full  rounded-t-lg h-80 md:h-auto md:w-[80%] md:rounded-none md:rounded-s-lg cursor-pointer relative">
-            <img id="imagenPreview" class="w-full h-full object-cover rounded-t-lg" src="${res.data.url}" alt="">
-            <input type="file" id="imagenInput" accept="image/*" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;">
-          </label>
-          <div class="flex flex-col justify-between p-4 leading-normal w-full">
+        <div class="relative flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-[100%] dark:border-gray-700 dark:bg-gray-800 py-3">
+          <i onclick="cerrar()" class="hover:text-gray-400 transition duration-200 absolute top-0 right-0 text-gray-50 fa-solid fa-xmark p-2" style="cursor:pointer;font-size: 1.5em;"></i>
+          <div for="dropzonefile" class="relative  h-[15em] sm:w-[20em] w-[15em] px-2 sm:col-span-4 col-span-6 row-span-3 label bg-transparent mb-3">
+          <div class="contenedorUP row-span-2 h-[19vh] w-[100%] ">
+              <div class="imagen pt-2 ">
+            <img id="imagen" class="h-[11em] mx-auto" src=${res.data.url} alt="">
+        </div>
+          </div>
+          <div class="input grid grid-cols-6 absolute inset-x-1 bottom-1   ">
+              <label id="butonURLUP"  for="" class="cursor-pointer rounded-l-lg col-span-1 self-center text-center text-white bg-gray-700 h-[100%] pt-2"> URL </label>
+              <input  id="urlImagenUP" autocomplete="off" type="text" class="rounded-r-lg col-span-5 bg-gray-500 border-2 border-gray-700 outline-0 p-2 dark:text-white" placeholder="https://.example.com">
+          </div>
+      </div>
+          <div class="flex flex-col justify-between px-4 leading-normal w-full">
             <div class="relative h-11 w-full min-w-[200px]">
               <input placeholder="Standard"
                      id="tituloID"
@@ -131,36 +176,43 @@ const updateId = async (id) => {
   
       const tituloID = document.getElementById('tituloID');
       const textareaID = document.getElementById('textareaID');
+      const urlImagenUP=document.getElementById('urlImagenUP')
       const formData = new FormData();
       const botonEnviar = update.querySelector("#botonEnviar");
-      
+      const butonURLUP=document.getElementById("butonURLUP")
+
+      butonURLUP.addEventListener("click",()=>{
+
+        const mostrar = `<div class="imagen mb:pt-1 sm:pt-2 pt-3 ">
+            <img id="imagen" class="h-[18vh] mx-auto" src=${urlImagenUP.value} alt="">
+        </div>`;
+  document.querySelector(".contenedorUP").innerHTML=mostrar
+      })
       botonEnviar.addEventListener("click", async () => {
-        let selectedImage = null;
+        // let selectedImage = null;
       
-        if (imagenInput.files.length > 0) {
-          selectedImage = imagenInput.files[0];
-        } else {
-          // Si no se selecciona un archivo nuevo, usar la URL de la imagen de imagenPreview
-          const imageUrl = imagenPreview.src;
-          const response = await fetch(imageUrl);
-          const blob = await response.blob();
-          selectedImage = new File([blob], 'imagenPreview.jpg', { type: 'image/jpeg' });
-        }
+        // if (imagenInput.files.length > 0) {
+        //   selectedImage = imagenInput.files[0];
+        // } else {
+        //   // Si no se selecciona un archivo nuevo, usar la URL de la imagen de imagenPreview
+        //   const imageUrl = imagenPreview.src;
+        //   const response = await fetch(imageUrl);
+        //   const blob = await response.blob();
+        //   selectedImage = new File([blob], 'imagenPreview.jpg', { type: 'image/jpeg' });
+        // }
       
-        formData.append("image", selectedImage);
+        // formData.append("image", selectedImage);
       
         try {
-          const respuesta = await axios.post(
-            "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
-            formData
-          );
+          // const respuesta = await axios.post(
+          //   "https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacionImg",
+          //   formData
+          // );
       
           await axios.put(`https://soloportafolio-dev-bqsp.3.us-1.fl0.io/informacion/${id}`, {
             title: tituloID.value,
             contend: textareaID.value,
-            // Si se selecciona un archivo nuevo, usar la URL de la respuesta del servidor
-            // De lo contrario, usar la URL de imagenPreview
-            url: respuesta.data.url || imagenPreview.src,
+            url: urlImagenUP.value || res.data.url,
           });
       
           location.reload();
@@ -170,8 +222,8 @@ const updateId = async (id) => {
       });
     
     // Manejar la selección de la imagen
-    const imagenInput = update.querySelector("#imagenInput");
-    imagenInput.addEventListener("change", handleImageSelection);
+    // const imagenInput = update.querySelector("#imagenInput");
+    // imagenInput.addEventListener("change", handleImageSelection);
   } catch (error) {
     console.error(error);
   }
@@ -182,16 +234,16 @@ const updateId = async (id) => {
     }
 
 
-const handleImageSelection = (event) => {
-  const imagenPreview = update.querySelector("#imagenPreview");
-  const file = event.target.files[0];
-  const reader = new FileReader();
+// const handleImageSelection = (event) => {
+//   const imagenPreview = update.querySelector("#imagenPreview");
+//   const file = event.target.files[0];
+//   const reader = new FileReader();
 
-  reader.onload = function () {
-    imagenPreview.src = reader.result;
-  };
+//   reader.onload = function () {
+//     imagenPreview.src = reader.result;
+//   };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-};
+//   if (file) {
+//     reader.readAsDataURL(file);
+//   }
+// };
